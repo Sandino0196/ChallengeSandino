@@ -1,27 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using ChallengeSandino.Models;
+using ChallengeSandino.Providers;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
-using Microsoft.Owin.Security.Google;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
-using ChallengeSandino.Providers;
-using ChallengeSandino.Models;
+using System;
+using System.Web.Http.Cors;
 
 namespace ChallengeSandino
 {
+    [EnableCorsAttribute("*", "*", "*")]
     public partial class Startup
     {
         public static OAuthAuthorizationServerOptions OAuthOptions { get; private set; }
 
         public static string PublicClientId { get; private set; }
 
-        // Para obtener más información sobre cómo configurar la autenticación, visite https://go.microsoft.com/fwlink/?LinkId=301864
+        // Para obtener más información sobre cómo configurar la autenticación, visite https://go.microsoft.com/fwlink/?LinkId=301864 
         public void ConfigureAuth(IAppBuilder app)
-        {
+        {            
             // Configure el contexto de base de datos y el administrador de usuarios para usar una única instancia por solicitud
             app.CreatePerOwinContext(ApplicationDbContext.Create);
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
@@ -38,14 +36,13 @@ namespace ChallengeSandino
                 TokenEndpointPath = new PathString("/Token"),
                 Provider = new ApplicationOAuthProvider(PublicClientId),
                 AuthorizeEndpointPath = new PathString("/api/Account/ExternalLogin"),
-                AccessTokenExpireTimeSpan = TimeSpan.FromDays(14),
+                AccessTokenExpireTimeSpan = TimeSpan.FromHours(1),
                 // En el modo de producción establezca AllowInsecureHttp = false
                 AllowInsecureHttp = true
             };
 
             // Permitir que la aplicación use tokens portadores para autenticar usuarios
-            app.UseOAuthBearerTokens(OAuthOptions);
-
+            app.UseOAuthBearerTokens(OAuthOptions);            
             // Quitar los comentarios de las siguientes líneas para habilitar el inicio de sesión con proveedores de inicio de sesión de terceros
             //app.UseMicrosoftAccountAuthentication(
             //    clientId: "",

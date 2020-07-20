@@ -426,16 +426,16 @@ namespace ChallengeSandino.Controllers
         {
             public string LoginProvider { get; set; }
             public string ProviderKey { get; set; }
-            public string UserName { get; set; }
+            public string Email { get; set; }
 
             public IList<Claim> GetClaims()
             {
                 IList<Claim> claims = new List<Claim>();
                 claims.Add(new Claim(ClaimTypes.NameIdentifier, ProviderKey, null, LoginProvider));
 
-                if (UserName != null)
+                if (Email != null)
                 {
-                    claims.Add(new Claim(ClaimTypes.Name, UserName, null, LoginProvider));
+                    claims.Add(new Claim(ClaimTypes.Name, Email, null, LoginProvider));
                 }
 
                 return claims;
@@ -465,7 +465,7 @@ namespace ChallengeSandino.Controllers
                 {
                     LoginProvider = providerKeyClaim.Issuer,
                     ProviderKey = providerKeyClaim.Value,
-                    UserName = identity.FindFirstValue(ClaimTypes.Name)
+                    Email = identity.FindFirstValue(ClaimTypes.Name)
                 };
             }
         }
