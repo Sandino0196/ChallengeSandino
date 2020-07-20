@@ -39,6 +39,10 @@ namespace ChallengeSandino.Models
         public string Email { get; set; }
 
         [Required]
+        [Display(Name = "Usuario")]
+        public string UserName { get; set; }
+
+        [Required]
         [StringLength(100, ErrorMessage = "El número de caracteres de {0} debe ser al menos {2}.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Contraseña")]
@@ -55,6 +59,10 @@ namespace ChallengeSandino.Models
         [Required]
         [Display(Name = "Correo electrónico")]
         public string Email { get; set; }
+
+        [Required]
+        [Display(Name = "Usuario")]
+        public string UserName { get; set; }
     }
 
     public class RemoveLoginBindingModel

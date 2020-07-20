@@ -16,9 +16,11 @@ using Microsoft.Owin.Security.OAuth;
 using ChallengeSandino.Models;
 using ChallengeSandino.Providers;
 using ChallengeSandino.Results;
+using System.Web.Http.Cors;
 
 namespace ChallengeSandino.Controllers
 {
+    [EnableCorsAttribute("*","*","*")]
     [Authorize]
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController
@@ -60,7 +62,7 @@ namespace ChallengeSandino.Controllers
 
             return new UserInfoViewModel
             {
-                Email = User.Identity.GetUserName(),
+                UserName = User.Identity.GetUserName(),
                 HasRegistered = externalLogin == null,
                 LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null
             };
@@ -328,7 +330,7 @@ namespace ChallengeSandino.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+            var user = new ApplicationUser() { UserName = model.UserName, Email = model.Email };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
@@ -357,7 +359,7 @@ namespace ChallengeSandino.Controllers
                 return InternalServerError();
             }
 
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+            var user = new ApplicationUser() { UserName = model.UserName, Email = model.Email };
 
             IdentityResult result = await UserManager.CreateAsync(user);
             if (!result.Succeeded)

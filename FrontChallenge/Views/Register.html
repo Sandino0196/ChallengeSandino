@@ -14,17 +14,68 @@
             <table class="table table-bordered table-responsive">
                 <thead>
                     <tr class="text-center info">
-                        New User Registration
-                        <a class="btn btn-info pull-right" href="#">Login</a>
+                        <td class="h4" colspan="2">
+                            New User Registration
+                            <a class="btn btn-info pull-right" href="#">Login</a>
+                        </td>                        
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-
+                        <td>Username</td>
+                        <td><input type="text" id="txtUsername" placeholder="Username" /></td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td><input type="email" id="txtEmail" placeholder="Email" /></td>
+                    </tr>
+                    <tr>
+                        <td>Password</td>
+                        <td><input type="password" id="txtPassword" placeholder="Password" /></td>
+                    </tr>
+                    <tr>
+                        <td>Confirm Password</td>
+                        <td><input type="password" id="txtConfirmPassword" placeholder="Confirm Password" /></td>
+                    </tr>
+                    <tr class="info">
+                        <td colspan="2">
+                            <input type="button" class="btn btn-info pull-left" id="btnRegister" value="Register"/>
+                        </td>
                     </tr>
                 </tbody>
             </table>
+            <div class="h6 text-center">
+                Copyright Rodrigo Sandino 2020
+            </div>
         </div>
     </div>
+
+    <script src="../Scripts/jquery-3.3.1.min.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#btnRegister').click(function () {
+                $.ajax({
+                    url: 'http://localhost:64687/api/Account/Register',
+                    method: 'post',
+                    data: {
+                        UserName: $('#txtUsername').val(),
+                        Email: $('#Email').val(),
+                        Password: $('#Password').val(),
+                        ConfirmPassword: $('#ConfirmPassword').val()
+                    },
+                    success: function () {
+                        $('#txtUsername').empty();
+                        $('#Email').empty();
+                        $('#Password').empty();
+                        $('#ConfirmPassword').empty();
+                    },
+                    error: function () {
+
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
