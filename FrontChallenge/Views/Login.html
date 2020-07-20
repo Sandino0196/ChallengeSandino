@@ -24,7 +24,7 @@
                     <tbody>
                         <tr>
                             <td>Email</td>
-                            <td><input type="email" id="txtEmail" placeholder="Email" /></td>
+                            <td><input type="text" id="txtUsername" placeholder="Username" /></td>
                         </tr>
                         <tr>
                             <td>Password</td>
@@ -59,11 +59,11 @@
             });
             $('#btnLogin').click(function () {
                 $.ajax({
-                    url: 'http://localhost:64687/api/Account/ExternalLogin',
+                    url: 'http://localhost:64687/Token',
                     method: 'post',
                     contentType: 'application/json',
                     data: {
-                        Email: $('#txtEmail').val(),
+                        UserName: $('#txtUsername').val(),
                         Password: $('#txtPassword').val(),
                         grant_type: 'password'
                     },

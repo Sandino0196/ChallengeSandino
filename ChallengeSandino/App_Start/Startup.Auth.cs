@@ -6,11 +6,9 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
 using System;
-using System.Web.Http.Cors;
 
 namespace ChallengeSandino
 {
-    [EnableCorsAttribute("*", "*", "*")]
     public partial class Startup
     {
         public static OAuthAuthorizationServerOptions OAuthOptions { get; private set; }

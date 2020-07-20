@@ -1,4 +1,13 @@
-﻿using System;
+﻿using ChallengeSandino.Models;
+using ChallengeSandino.Providers;
+using ChallengeSandino.Results;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
+using Microsoft.Owin.Security.Cookies;
+using Microsoft.Owin.Security.OAuth;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Security.Claims;
@@ -6,16 +15,6 @@ using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
-using System.Web.Http.ModelBinding;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using Microsoft.Owin.Security.Cookies;
-using Microsoft.Owin.Security.OAuth;
-using ChallengeSandino.Models;
-using ChallengeSandino.Providers;
-using ChallengeSandino.Results;
 using System.Web.Http.Cors;
 
 namespace ChallengeSandino.Controllers
@@ -110,7 +109,7 @@ namespace ChallengeSandino.Controllers
             return new ManageInfoViewModel
             {
                 LocalLoginProvider = LocalLoginProvider,
-                Email = user.UserName,
+                UserName = user.UserName,
                 Logins = logins,
                 ExternalLoginProviders = GetExternalLogins(returnUrl, generateState)
             };
@@ -426,16 +425,16 @@ namespace ChallengeSandino.Controllers
         {
             public string LoginProvider { get; set; }
             public string ProviderKey { get; set; }
-            public string Email { get; set; }
+            public string UserName { get; set; }
 
             public IList<Claim> GetClaims()
             {
                 IList<Claim> claims = new List<Claim>();
                 claims.Add(new Claim(ClaimTypes.NameIdentifier, ProviderKey, null, LoginProvider));
 
-                if (Email != null)
+                if (UserName != null)
                 {
-                    claims.Add(new Claim(ClaimTypes.Name, Email, null, LoginProvider));
+                    claims.Add(new Claim(ClaimTypes.Name, UserName, null, LoginProvider));
                 }
 
                 return claims;
@@ -465,7 +464,7 @@ namespace ChallengeSandino.Controllers
                 {
                     LoginProvider = providerKeyClaim.Issuer,
                     ProviderKey = providerKeyClaim.Value,
-                    Email = identity.FindFirstValue(ClaimTypes.Name)
+                    UserName = identity.FindFirstValue(ClaimTypes.Name)
                 };
             }
         }
