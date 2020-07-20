@@ -44,6 +44,33 @@
                     </tr>
                 </tbody>
             </table>
+            <div class="modal fade" tabindex="-1" id="successModal"
+                 data-keyboard="false" data-backdrop="static">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" id="btnCloseX">
+                                &times;
+                            </button>
+                            <h4>Success</h4>
+                        </div>
+                        <div class="modal-body">
+                            <h2>Registration Successfull</h2>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-info" data-dismiss="modal" id="btnClose">
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="divError" class="alert alert-danger collapse">
+                <a id="linkClose" class="close">&times;</a>
+                <div id="divErrorText">
+
+                </div>
+            </div>
             <div class="h6 text-center">
                 Copyright Rodrigo Sandino 2020
             </div>
@@ -54,24 +81,25 @@
     <script src="../Scripts/bootstrap.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
+            $('#linkClose').click(function () {
+                $('#divError').hide('fade');
+            });
             $('#btnRegister').click(function () {
                 $.ajax({
                     url: 'http://localhost:64687/api/Account/Register',
                     method: 'post',
                     data: {
                         UserName: $('#txtUsername').val(),
-                        Email: $('#Email').val(),
-                        Password: $('#Password').val(),
-                        ConfirmPassword: $('#ConfirmPassword').val()
+                        Email: $('#txtEmail').val(),
+                        Password: $('#txtPassword').val(),
+                        ConfirmPassword: $('#txtConfirmPassword').val()
                     },
                     success: function () {
-                        $('#txtUsername').empty();
-                        $('#Email').empty();
-                        $('#Password').empty();
-                        $('#ConfirmPassword').empty();
+                        $('#successModal').modal('show');
                     },
-                    error: function () {
-
+                    error: function (error) {
+                        $('#divErrorText').text(error.responseText);
+                        $('#divError').show('fade');
                     }
                 });
             });

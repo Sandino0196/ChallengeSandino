@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="576cbf349c6844c582d1168e6d2dc502" Name="Diagram1">
+        <EntityTypeShape EntityType="FinancesChallengeDBModel.Expense_Detail" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinancesChallengeDBModel.Expens" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinancesChallengeDBModel.Home_Expense_Detail" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinancesChallengeDBModel.Home_Expenses" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <AssociationConnector Association="FinancesChallengeDBModel.FK_Expense_Detail_Expenses" ManuallyRouted="false" />
+        <AssociationConnector Association="FinancesChallengeDBModel.FK_Home_Expense_Detail_Home_Expenses" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

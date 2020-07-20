@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChallengeSandino", "Challen
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrontChallenge", "FrontChallenge\FrontChallenge.csproj", "{818BF85C-93CF-47DE-AB92-A2D7C225B1C5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancesDataAccess", "FinancesDataAccess\FinancesDataAccess.csproj", "{533C3F77-DBE7-4802-BE58-4EC704656128}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{818BF85C-93CF-47DE-AB92-A2D7C225B1C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{818BF85C-93CF-47DE-AB92-A2D7C225B1C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{818BF85C-93CF-47DE-AB92-A2D7C225B1C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{533C3F77-DBE7-4802-BE58-4EC704656128}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{533C3F77-DBE7-4802-BE58-4EC704656128}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{533C3F77-DBE7-4802-BE58-4EC704656128}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{533C3F77-DBE7-4802-BE58-4EC704656128}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
