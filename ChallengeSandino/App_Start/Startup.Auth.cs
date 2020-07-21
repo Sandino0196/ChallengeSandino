@@ -23,11 +23,11 @@ namespace ChallengeSandino
             _configuration = configuration;
         }
 
-        public void ConfigurationServices(IServiceCollection services)
+        /*public void ConfigurationServices(IServiceCollection services)
         {
             services.AddDbContextPool<FinancesChallengeDBEntities1>(
                 options => options.UseSqlServer(_configuration.GetConnectionString("FinancesChallengeDBEntities1")));
-        }
+        }*/
 
         public static OAuthAuthorizationServerOptions OAuthOptions { get; private set; }
 

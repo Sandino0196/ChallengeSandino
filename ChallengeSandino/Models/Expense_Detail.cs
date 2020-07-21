@@ -11,9 +11,12 @@ namespace ChallengeSandino.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using Microsoft.EntityFrameworkCore;
+
     public partial class Expense_Detail
     {
+        internal EntityState State;
+
         public int ID_Expense { get; set; }
         public string ID_User { get; set; }
         public System.DateTime Date { get; set; }

@@ -11,9 +11,12 @@ namespace ChallengeSandino.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using Microsoft.EntityFrameworkCore;
+
     public partial class Home_Expenses
     {
+        internal EntityState State;
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Home_Expenses()
         {
