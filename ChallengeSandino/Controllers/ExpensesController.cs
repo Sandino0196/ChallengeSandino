@@ -1,4 +1,4 @@
-﻿using FinancesDataAccess;
+﻿//using FinancesDataAccess;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,12 +11,12 @@ namespace ChallengeSandino.Controllers
     //[Authorize]
     public class ExpensesController : ApiController
     {
-        public IEnumerable<Expenses> Get()
+        /*public IEnumerable<Expense_Detail> Get()
         {
             using (FinancesChallengeDBEntities finances = new FinancesChallengeDBEntities())
             {
-                return finances.Expenses.ToList();
+                return finances.Expense_Detail.ToList();
             }
-        }
+        }*/
     }
 }
