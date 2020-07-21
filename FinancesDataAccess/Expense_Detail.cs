@@ -19,6 +19,6 @@ namespace FinancesDataAccess
         public System.DateTime Date { get; set; }
         public decimal Spent_Money { get; set; }
     
-        public virtual Expens Expens { get; set; }
+        public virtual Expenses Expenses { get; set; }
     }
 }

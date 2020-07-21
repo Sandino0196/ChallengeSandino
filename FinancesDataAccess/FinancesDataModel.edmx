@@ -91,9 +91,9 @@
           <Property Name="ID_User" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Spent_Money" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <NavigationProperty Name="Expens" Relationship="Self.FK_Expense_Detail_Expenses" FromRole="Expense_Detail" ToRole="Expenses" />
+          <NavigationProperty Name="Expenses" Relationship="Self.FK_Expense_Detail_Expenses" FromRole="Expense_Detail" ToRole="Expenses" />
         </EntityType>
-        <EntityType Name="Expens">
+        <EntityType Name="Expenses">
           <Key>
             <PropertyRef Name="ID_Expense" />
           </Key>
@@ -121,7 +121,7 @@
           <NavigationProperty Name="Home_Expense_Detail" Relationship="Self.FK_Home_Expense_Detail_Home_Expenses" FromRole="Home_Expenses" ToRole="Home_Expense_Detail" />
         </EntityType>
         <Association Name="FK_Expense_Detail_Expenses">
-          <End Role="Expenses" Type="Self.Expens" Multiplicity="1" />
+          <End Role="Expenses" Type="Self.Expenses" Multiplicity="1" />
           <End Role="Expense_Detail" Type="Self.Expense_Detail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Expenses">
@@ -146,7 +146,7 @@
         </Association>
         <EntityContainer Name="FinancesChallengeDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Expense_Detail" EntityType="Self.Expense_Detail" />
-          <EntitySet Name="Expenses" EntityType="Self.Expens" />
+          <EntitySet Name="Expenses" EntityType="Self.Expenses" />
           <EntitySet Name="Home_Expense_Detail" EntityType="Self.Home_Expense_Detail" />
           <EntitySet Name="Home_Expenses" EntityType="Self.Home_Expenses" />
           <AssociationSet Name="FK_Expense_Detail_Expenses" Association="Self.FK_Expense_Detail_Expenses">
@@ -175,7 +175,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Expenses">
-            <EntityTypeMapping TypeName="FinancesChallengeDBModel.Expens">
+            <EntityTypeMapping TypeName="FinancesChallengeDBModel.Expenses">
               <MappingFragment StoreEntitySet="Expenses">
                 <ScalarProperty Name="ID_Expense" ColumnName="ID_Expense" />
                 <ScalarProperty Name="Description_Expense" ColumnName="Description_Expense" />
@@ -214,7 +214,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />

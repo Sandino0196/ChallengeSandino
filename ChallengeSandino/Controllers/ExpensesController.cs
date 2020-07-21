@@ -11,7 +11,7 @@ namespace ChallengeSandino.Controllers
     //[Authorize]
     public class ExpensesController : ApiController
     {
-        public IEnumerable<Expens> Get()
+        public IEnumerable<Expenses> Get()
         {
             using (FinancesChallengeDBEntities finances = new FinancesChallengeDBEntities())
             {

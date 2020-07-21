@@ -10,12 +10,12 @@
 namespace FinancesDataAccess
 {
     using System;
-    using System.Collections.Generic;    
+    using System.Collections.Generic;
     
-    public partial class Expens
+    public partial class Expenses
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Expens()
+        public Expenses()
         {
             this.Expense_Detail = new HashSet<Expense_Detail>();
         }

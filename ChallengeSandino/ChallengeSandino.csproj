@@ -450,7 +450,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FinancesDataAccess\FinancesDataAccess.csproj">
-      <Project>{533C3F77-DBE7-4802-BE58-4EC704656128}</Project>
+      <Project>{49D8A5D6-AA81-45B4-ABD9-8F21DCABA096}</Project>
       <Name>FinancesDataAccess</Name>
     </ProjectReference>
   </ItemGroup>
