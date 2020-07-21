@@ -1,6 +1,11 @@
 ﻿using ChallengeSandino.Models;
 using ChallengeSandino.Providers;
 using Microsoft.AspNet.Identity;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+//using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
@@ -11,13 +16,26 @@ namespace ChallengeSandino
 {
     public partial class Startup
     {
+        private readonly IConfiguration _configuration;
+
+        public Startup(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+
+        public void ConfigurationServices(IServiceCollection services)
+        {
+            services.AddDbContextPool<FinancesChallengeDBEntities1>(
+                options => options.UseSqlServer(_configuration.GetConnectionString("FinancesChallengeDBEntities1")));
+        }
+
         public static OAuthAuthorizationServerOptions OAuthOptions { get; private set; }
 
         public static string PublicClientId { get; private set; }
 
         // Para obtener más información sobre cómo configurar la autenticación, visite https://go.microsoft.com/fwlink/?LinkId=301864 
         public void ConfigureAuth(IAppBuilder app)
-        {            
+        {
             // Configure el contexto de base de datos y el administrador de usuarios para usar una única instancia por solicitud
             app.CreatePerOwinContext(ApplicationDbContext.Create);
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
@@ -41,24 +59,6 @@ namespace ChallengeSandino
 
             // Permitir que la aplicación use tokens portadores para autenticar usuarios
             app.UseOAuthBearerTokens(OAuthOptions);            
-            // Quitar los comentarios de las siguientes líneas para habilitar el inicio de sesión con proveedores de inicio de sesión de terceros
-            //app.UseMicrosoftAccountAuthentication(
-            //    clientId: "",
-            //    clientSecret: "");
-
-            //app.UseTwitterAuthentication(
-            //    consumerKey: "",
-            //    consumerSecret: "");
-
-            //app.UseFacebookAuthentication(
-            //    appId: "",
-            //    appSecret: "");
-
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
         }
     }
 }
